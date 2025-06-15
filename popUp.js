@@ -16,6 +16,12 @@ const track3 = {
     audioFile: 'terima_kasih_pak_jokowi.m4a',
     cover: 'images/terima_kasih_pak_jokowi.jpg',
 };
+const track4 = {
+    musicTitle: 'Tak Ingin Sendiri',
+    artistName: 'Dian Piesesha',
+    audioFile: 'Dian_Piesesha-Tak_Ingin_Sendiri.mp3',
+    cover: 'images/Tak_Ingin_Sendiri.jpg',
+};
 
 let play = document.getElementById('audio');
 const musicFloat = document.getElementById('musicFloat');
@@ -34,15 +40,16 @@ function containerNames() {
     document.getElementById('containerTitle2').innerText = track2.musicTitle;
     document.getElementById('containerImg3').src = track3.cover;
     document.getElementById('containerTitle3').innerText = track3.musicTitle;
+    document.getElementById('containerImg4').src = track4.cover;
+    document.getElementById('containerTitle4').innerText = track4.musicTitle;
 }
 function playIcon() {
-    if (musicMini.style.display === 'none') {
+    if (!musicMini.classList.contains('show')) {
         play.currentTime = 0;
-        musicMini.style.display = 'flex';
+        musicMini.classList.add('show');
         buttonPlayMini.className = "fa-solid fa-circle-pause";
         buttonPlay.className = "fa-solid fa-circle-pause";
     } else {
-        musicMini.style.display = 'none';
         buttonPlayMini.className = "fa-solid fa-circle-pause";
         buttonPlay.className = "fa-solid fa-circle-pause";
     }
@@ -101,17 +108,40 @@ function popOpen3() {
         play.play();
     }
 }
-function pop() {
-    musicFloat.classList.add('showupBlock');
-}
+function popOpen4() {
+    // Assign track names and img to container
+    play.src = track4.audioFile;
+    musicTitleMini.innerText = track4.musicTitle;
+    artistMini.innerText = track4.artistName;
+    coverMini.src = track4.cover;
 
+    musicTitleFloat.innerText = track4.musicTitle;
+    artistFloat.innerText = track4.artistName;
+    coverFloat.src = track4.cover;
+
+    playIcon();
+    if (musicMini.style.display === 'none') {
+        play.pause();
+    } else {
+        play.play();
+    }
+}
+function pop() {
+    musicFloat.classList.add('show');
+}
+function slideDownMini() {
+    musicMini.classList.remove('show');
+    play.pause();
+    play.currentTime = 0;
+}
 function slideDown() {
-    musicFloat.classList.remove('showupBlock');
-    musicFloat.classList.add('hidden');
+    musicFloat.classList.remove('show');
 }
 window.pop = pop;
 window.slideDown = slideDown;
+window.slideDownMini = slideDownMini;
 window.popOpen = popOpen;
 window.popOpen2 = popOpen2;
 window.popOpen3 = popOpen3;
+window.popOpen4 = popOpen4;
 window.containerNames = containerNames;

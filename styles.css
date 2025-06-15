@@ -1,12 +1,8 @@
 @font-face {
     font-family: 'Helvetica';
-    src: url('../fonts/Helvetica.ttf') format('truetype'),
-    url('../fonts/Helvetica-Bold.ttf') format('truetype');
+    src: url('./fonts/Helvetica.ttf') format('truetype'),
+    url('./fonts/Helvetica-Bold.ttf') format('truetype');
     font-weight: normal;
-}
-@keyframes slideUp {
-    from { transform: translateY(100dvh) }
-    to { transform: translateY(0px) }
 }
 @keyframes slideDown {
     from { transform: translateY(0px) }
@@ -16,10 +12,6 @@
     from { scale: 1; }
     to { scale: 1.11; }
 }
-@keyframes slideUpMini {
-    from { transform: translateY(20dvh); }
-    to { transform: translateY(0); }
-}
 
 * { margin: 0; padding: 0; }
 body {
@@ -28,7 +20,7 @@ body {
     color: #fff;
     height: 100dvh;
 }
-header { padding: 20px; border-bottom: 1px solid #fff; }
+header { padding: 20px; border-bottom: 1px solid #fff; backdrop-filter: blur(5px); }
 i { background: none; border: none; }
 main { padding: 15px; }
 h1,h2,h3,h4 {
@@ -47,7 +39,7 @@ h1,h2,h3,h4 {
     width: 14em;
     height: auto;
     border-radius: 5px;
-    background-color: #87CEEB;
+    background: linear-gradient(to bottom right, #87CEEB, lightblue);
     border: 1px solid #fff;
     padding: 10px;
     color: #fff;
@@ -97,21 +89,32 @@ div button h3 {
 }
 .errorContainer button:active { background-color: #65ACC9; animation: scaling 0.6s forwards; }
 .musicMini {
-    display: none;
-    align-items: center;
+    visibility: hidden;
     z-index: 2;
     position: fixed;
     box-sizing: border-box;
     width: 100vw;
-    height: 4em;
-    bottom: 5em;
+    height: fit-content;
+    bottom: -5em;
     background-image: linear-gradient(#87CEEB, lightblue);
     border: 1px solid #fff;
     padding: 10px;
+    padding-bottom: 5px;
     border-radius: 12px;
-    gap: 10px;
-    animation: slideUpMini 0.8s ease;
+    transition: visibility 0.8s, bottom 0.8s;
 }
+.closeMusicMini {
+    width: 30%;
+    height: 3px;
+    background-color: #eee;
+    border-radius: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+}
+.closeMusicMini:active { background-color: #ccc; }
+.musicMiniFlex { display: flex; gap: 10px; }
+.musicMini.show { visibility: visible; bottom: 5em; }
 #coverMini {
     width: 3em;
     height: auto;
@@ -131,20 +134,18 @@ div button h3 {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.audioPlayMini {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
+.audioPlayMini { display: flex; align-items: center; gap: 5px; }
 #backwardMini, #pauseMini, #forwardMini {
+    display: inline-block;
     font-size: 2.5rem;
     padding: 3px;
     color: #fff;
 }
 #backwardMini:active, #pauseMini:active, #forwardMini:active { color: #aaa; }
 .musicFloat {
-    display: none;
-    background-image: linear-gradient(lightblue, #87CEEB);
+    visibility: hidden;
+    background: transparent;
+    backdrop-filter: blur(16px);
     position: fixed;
     top: 0;
     padding: 20px;
@@ -153,39 +154,38 @@ div button h3 {
     border: 1px solid #fff;
     box-sizing: border-box;
     z-index: 5;
-    animation: slideUp 0.7s;
-    transform: slideDown 0.7s;
+    transform: translateY(100dvh);
+    transition: visibility 0.7s, transform 0.7s;
 }
-.hidden { display: none; }
-.showupBlock { display: block; }
+.musicFloat.show { visibility: visible; transform: translateY(0px); }
 .showupFlex { display: flex; }
 #slideDown:active { color: #aaa; }
 #durationSlider { width: 100%; }
 #coverFloat {
     display: block;
-    padding-top: 5dvh;
-    padding-bottom: 5dvh;
-    border-radius: 20%;
-    width: clamp(128px, 100% 128px);
+    margin-top: 5dvh;
+    margin-bottom: 5dvh;
+    border-radius: 10%;
+    width: clamp(100%, 100%, 128px);
     height: auto;
     margin-left: auto;
     margin-right: auto;
 }
 .duration { display: flex; justify-content: space-between; }
 .audioPlay { display: flex; justify-content: space-evenly; }
-#restart,#loop { font-size: 3em; }
+#restart,#loop { font-size: 3em; padding: 5px; }
 #backward,#pause,#forward { font-size: 4rem; }
 #restart:active,#backward:active,#pause:active,#forward:active { color: #aaa; }
 button {
     background: none;
     border: none;
     color: #fff;
-    cursor: pointer;
 }
 footer {
     z-index: 3;
     border-top: 1px solid #fff;
-    background-color: #87CEEB;
+    background: transparent;
+    backdrop-filter: blur(8px);
     position: fixed;
     display: flex;
     justify-content: space-evenly;
@@ -196,8 +196,8 @@ footer {
     box-sizing: border-box;
 }
 a { color: #fff; text-decoration: none; }
-footer i { font-size: 2em; }
-footer i:hover { animation: scaling 0.7s forwards; cursor: pointer; }
+footer i { font-size: 2em; transition: scale 0.7s; }
+footer i:hover { scale: 1.11; }
 .searchbox {
     position: fixed;
     display: none;
@@ -218,17 +218,12 @@ footer i:hover { animation: scaling 0.7s forwards; cursor: pointer; }
 
 @media(min-width: 768px) {
     main { margin-left: 20%; margin-right: 20%; }
-    .musicMini {
-        width: 50dvw;
-        left: 50%;
-        transform: translateX(-50%);
-    }
+    .musicMini { width: 50dvw; left: 50%; }
     .musicFloat {
-        width: 50dvh;
+        width: 35dvw;
         height: auto;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 10dvh;
+        bottom: 5em;
         top: auto;
     }
+    button { cursor: pointer; }
 }
