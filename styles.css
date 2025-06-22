@@ -230,10 +230,10 @@ footer i:hover { scale: 1.11; }
         top: auto;
     }
     #musicTitleFloat {
-        font-size: clamp(2dvh, 8dvh, 2.25dvh);
+        font-size: clamp(10px, 3dvh, 4dvh);
     }
     #artistFloat {
-        font-size: clamp(1.5dvh, 6dvh, 1.85dvh);
+        font-size: clamp(5px, 2dvh, 3dvh);
     }
     #restart,#loop {
         font-size: clamp(1.5dvh, 6dvh, 3dvw);

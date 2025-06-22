@@ -14,12 +14,16 @@ window.onload = document.fonts.addEventListener('loadingdone', () => {
     }
     elementCheck.remove();
 })
-const mediaQueryList = window.matchMedia("(max-width: 240px)");
-function handleMediaQueryChange(event) {
+const mediaLimit = window.matchMedia("(max-width: 240px)");
+function media() {
     const errorMessage = document.querySelector('.errorScreen .errorContainer h2');
-    if (event.matches) {
+    const errorMessageDescription = document.querySelector('.errorScreen .errorContainer p');
+    if (mediaLimit.matches) {
         document.getElementById('errorScreen').style.display = 'block';
         errorMessage.innerText = 'Layar terlalu kecil!';
+        errorMessageDescription.innerText = 'Harap ubah resolusi layar dan refresh.';
     }
 }
-mediaQueryList.addEventListener("change", handleMediaQueryChange);
+setInterval(() => {
+    mediaLimit.addEventListener("change", media);
+}, 100)
