@@ -1,0 +1,245 @@
+@font-face {
+    font-family: 'Helvetica';
+    src: url('./fonts/Helvetica.ttf') format('truetype'),
+    url('./fonts/Helvetica-Bold.ttf') format('truetype');
+    font-weight: normal;
+}
+@keyframes slideDown {
+    from { transform: translateY(0px) }
+    to { transform: translateY(100dvh) }
+}
+
+@media (max-width: 360px) {
+    #slideDown {
+        font-size: 40%;
+    }
+    #coverFloat {
+        max-width: 50vh;
+    }
+    #musicTitleFloat {
+        font-size: 100%;
+    }
+    #artistFloat {
+        font-size: 90%;
+    }
+    .duration p {
+        font-size: 5%;
+    }
+    #restart,#loop { font-size: 12vw; }
+    #backward,#pause,#forward { font-size: 12vw; }
+}
+
+* { margin: 0; padding: 0; }
+body {
+    background-image: linear-gradient(lightblue, #87CEEB);
+    font-family: 'Helvetica', Sans-Serif;
+    color: #fff;
+    height: 100dvh;
+}
+header { padding: 20px; border-bottom: 1px solid #fff; backdrop-filter: blur(5px); }
+i { background: none; border: none; }
+main { padding: 15px; }
+h1,h2,h3,h4 {
+    padding-top: 3px;
+    font-family: 'Helvetica', Sans-Serif;
+}
+.containerList {
+    display: flex;
+    white-space: no-wrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 10px;
+}
+.container {
+    width: 14em;
+    height: auto;
+    border-radius: 5px;
+    background: linear-gradient(to bottom right, #87CEEB, lightblue);
+    border: 1px solid #fff;
+    padding: 10px;
+    color: #fff;
+    scroll-snap-align: center;
+    transition: all 0.125s;
+}
+.container:active { color: #aaa; }
+img {
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+}
+.container img { width: 12em; height: 12em; }
+div button h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.errorScreen {
+    display: none;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    background-color: hsla(0,100%,0%,0.500);
+    width: 100dvw;
+    height: 100dvh;
+}
+.errorContainer {
+    display: block;
+    box-sizing: border-box;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 100%;
+    padding: 12px;
+    text-align: center;
+    background-color: lightblue;
+    border-radius: 8px;
+    border: 1px solid #fff;
+}
+.errorContainer button {
+    border: 1px solid #fff;
+    background-color: #87CEEB;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 4px;
+    transition: all 0.6s;
+}
+.errorContainer button:hover { background-color: #65ACC9; scale: 1.05; }
+.musicMini {
+    visibility: hidden;
+    z-index: 2;
+    position: fixed;
+    box-sizing: border-box;
+    width: 100vw;
+    height: fit-content;
+    bottom: -5em;
+    background-image: linear-gradient(#87CEEB, lightblue);
+    border: 1px solid #fff;
+    padding: 10px 10px 5px 10px;
+    border-radius: 12px;
+    transition: all 0.8s;
+}
+.closeMusicMini {
+    width: 30%;
+    height: 3px;
+    background-color: #eee;
+    border-radius: 4px;
+    margin: 5px auto 0 auto;
+    cursor: pointer;
+}
+.closeMusicMini:active { background-color: #ccc; }
+.musicMiniFlex { display: flex; gap: 10px; }
+.musicMini.show { visibility: visible; bottom: 5em; }
+#coverMini { width: 3em; height: auto; }
+.musicInfo {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+.musicInfo h2, .musicInfo p {
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.audioPlayMini { display: flex; align-items: center; gap: 5px; }
+#backwardMini, #pauseMini, #forwardMini {
+    display: inline-block;
+    font-size: 2.5rem;
+    padding: 3px;
+    color: #fff;
+}
+#backwardMini:active, #pauseMini:active, #forwardMini:active { color: #eee; }
+.musicFloat {
+    visibility: hidden;
+    background: transparent;
+    position: fixed;
+    top: 0;
+    padding: 20px;
+    width: 100dvw;
+    height: 100dvh;
+    border-radius: 30px 30px 0 0;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    z-index: 5;
+    transform: translateY(100dvh);
+    transition: visibility 0.7s, transform 0.7s, backdrop-filter 1.3s;
+}
+.musicFloat.show { visibility: visible; transform: translateY(0px); backdrop-filter: blur(12px); }
+.showupFlex { display: flex; }
+#slideDown:active { color: #eee; }
+#durationSlider { width: 100%; }
+#coverFloat {
+    display: block;
+    margin: 5dvh auto 5dvh auto;
+    height: auto;
+}
+.duration { display: flex; justify-content: space-between; }
+.audioPlay { display: flex; justify-content: space-evenly; }
+#restart,#loop { font-size: 2rem; padding: 5px; }
+#loop { background-color: transparent; color: #fff; border-radius: 10px; transition: all 0.15s; }
+#loop.active { background-color: #fff; color: #87CEEB; box-sizing: border-box; }
+#backward,#pause,#forward { font-size: 3rem; }
+#restart:active,#backward:active,#pause:active,#forward:active { color: #eee; }
+button { background: none; border: none; color: #fff; }
+footer {
+    z-index: 3;
+    border-top: 1px solid #fff;
+    background: transparent;
+    backdrop-filter: blur(8px);
+    position: fixed;
+    display: flex;
+    justify-content: space-evenly;
+    bottom: 0vh;
+    padding: 10px;
+    width: 100vw;
+    text-align: center;
+    box-sizing: border-box;
+}
+a { color: #fff; text-decoration: none; }
+footer i { font-size: 2em; transition: all 0.7s; }
+footer i:hover { scale: 1.11; }
+.searchbox {
+    position: fixed;
+    display: none;
+    width: 100vw;
+    padding: 5px;
+    left: 0;
+    right: 0;
+    top: 40vh;
+}
+.searchbox input {
+    font-size: 20px;
+    padding: 5px;
+    background-color: #333;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+    main { margin: 0 20% 0 20%; padding-bottom: 5%; }
+    .musicMini { width: 50dvw; left: 50%; cursor: pointer; }
+    .musicFloat {
+        width: clamp(5vh, 50dvh, 40dvw);
+        height: auto;
+        bottom: 5em;
+        top: auto;
+    }
+    #musicTitleFloat {
+        font-size: clamp(2dvh, 8dvh, 2.25dvh);
+    }
+    #artistFloat {
+        font-size: clamp(1.5dvh, 6dvh, 1.85dvh);
+    }
+    #restart,#loop {
+        font-size: clamp(1.5dvh, 6dvh, 3dvw);
+    }
+    #backward,#pause,#forward {
+        font-size: clamp(3dvh, 8dvh, 4.5dvw);
+    }
+    button { cursor: pointer; }
+}

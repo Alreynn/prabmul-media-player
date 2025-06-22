@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <title>Prabowo-Jokowi Media Player</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpeg" href="favicon.jpg">
+    <meta property="og:image" content="favicon.jpg">
+    <meta property="og:description" content="Dengarkan koleksi lagu Prabowo–Jokowi dimana saja dan kapanpun kamu mau.">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/6f449e2c05.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Prabowo-Jokowi Untuk Kebutuhan Iman</h1>
+    </header>
+
+    <div class="errorScreen" id="errorScreen">
+        <div class="errorContainer">
+            <h2>Kayaknya kamu error nih.</h2>
+            <p>Coba refresh?</p>
+            <br>
+            <button id="reload" onclick="reload()">Refresh</button>
+        </div>
+    </div>
+    
+    <main>
+        <audio id="audio" src="" preload="auto"></audio>
+        <h1>Cari lagu yang sesuai dengan kebutuhanmu akan Prabowo-Jokowi.</h1><br><br>
+        <h2>Musik pilihan kami.</h2><br>
+        <div class="containerList">
+            <button onclick="popOpen()" class="container">
+                <img id="containerImg1" src="">
+                <h3 id="containerTitle1">TitleContainer</h3>
+            </button>
+            <button onclick="popOpen2()" class="container">
+                <img id="containerImg2" src="">
+                <h3 id="containerTitle2">TitleContainer2</h3>
+            </button>
+            <button onclick="popOpen3()" class="container">
+                <img id="containerImg3" src="">
+                <h3 id="containerTitle3">TitleContainer3</h3>
+            </button>
+        </div><br>
+        <h2>Musik favorit Prabowo.</h2><br>
+        <div class="containerList">
+            <button onclick="popOpen4()" class="container">
+                <img id="containerImg4" src="">
+                <h3 id="containerTitle4">TitleContainer</h3>
+            </button>
+        </div>
+    </main>
+
+    <div onclick="pop()" id="musicMini" class="musicMini" href="#">
+        <div class="musicMiniFlex">
+            <img id="coverMini" src="">
+            <div class="musicInfo">
+                <h2 id="musicTitleMini">TitleMini</h2>
+                <p id="artistMini">ArtistNameMini</p>
+            </div>
+            <div class="audioPlayMini">
+                <button onclick="event.stopPropagation(); minusTen()"><i id="backwardMini" class="fa-solid fa-backward"></i></button>
+                <button onclick="event.stopPropagation(); playAudio()"><i id="pauseMini" class="fa-solid fa-circle-play"></i></button>
+                <button onclick="event.stopPropagation(); plusTen()"><i id="forwardMini" class="fa-solid fa-forward"></i></button>
+            </div>
+        </div>
+        <div class="closeMusicMini" onclick="event.stopPropagation(); slideDownMini()"></div>
+    </div>
+
+    <div id="musicFloat" class="musicFloat">
+        <button id="slideDown" onclick="slideDown()"><i class="fa-solid fa-chevron-down fa-2xl"></i></button>
+        <img id="coverFloat" src="">
+        <h1 id="musicTitleFloat">TitleFloat</h1>
+        <h3 id="artistFloat">ArtistFloat</h3>
+        <br>
+        <input id="durationSlider" type="range" value="0"><br>
+        <div class="duration">
+            <p id="durationStart">durationStart</p>
+            <p id="durationEnd">durationEnd</p>
+        </div>
+        <br>
+        <div class="audioPlay">
+            <button onclick="restart()"><i id="restart" class="fa-solid fa-rotate-left"></i></button>
+            <button onclick="minusTen()"><i id="backward" class="fa-solid fa-backward"></i></button>
+            <button onclick="playAudio()"><i id="pause" class="fa-solid fa-circle-play"></i></button>
+            <button onclick="plusTen()"><i id="forward" class="fa-solid fa-forward"></i></button>
+            <button onclick="loop()"><i id="loop" class="fa-solid fa-repeat"></i></button>
+        </div>
+    </div>
+
+    <footer>
+        <a href="index.html">
+            <i class="fa-solid fa-house"></i>
+            <p>Halaman</p>
+        </a>
+    </footer>
+
+    <script src="audioPlayer.js"></script>
+    <script type="module" src="popUp.js"></script>
+    <script src="errorIcon.js"></script>
+    <script>
+        window.onload = () => {
+            duration();
+            containerNames();
+        };
+    </script>
+</body>
+</html>
