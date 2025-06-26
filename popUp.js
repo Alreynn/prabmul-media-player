@@ -31,14 +31,14 @@ function playIcon() {
         buttonPlay.className = "fa-solid fa-circle-pause";
     }
     // musicMini.style.display === 'none'
-    if (isPlaying === true && musicMini.classList.contains('show')) {
-        play.play();
-        buttonPlay.className = "fa-solid fa-circle-pause";
-        buttonPlayMini.className = "fa-solid fa-circle-pause";
-    } else {
+    if (musicMini.style.display === 'none') {
         play.pause();
         buttonPlay.className = "fa-solid fa-circle-play";
         buttonPlayMini.className = "fa-solid fa-circle-play";
+    } else {
+        play.play();
+        buttonPlay.className = "fa-solid fa-circle-pause";
+        buttonPlayMini.className = "fa-solid fa-circle-pause";
     }
 }
 function popOpen() {
