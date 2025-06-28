@@ -1,7 +1,7 @@
 import { track1, track2, track3, track4 } from "./tracks.js";
 const tracks = [track1, track2, track3, track4];
 
-let play = document.getElementById('audio');
+let audio = document.getElementById('audio');
 const musicFloat = document.getElementById('musicFloat');
 let musicMini = document.getElementById('musicMini');
 let musicTitleMini = document.getElementById('musicTitleMini');
@@ -23,7 +23,7 @@ function containerNames() {
 }
 function playIcon() {
     if (!musicMini.classList.contains('show')) { // Deteksi jika tidak musicMini tidak berclass show
-        play.currentTime = 0;
+        audio.currentTime = 0;
         musicMini.classList.add('show');
         buttonPlayMini.className = "fa-solid fa-circle-pause";
         buttonPlay.className = "fa-solid fa-circle-pause";
@@ -33,18 +33,18 @@ function playIcon() {
     }
     // musicMini.style.display === 'none'
     if (musicMini.style.display === 'none') {
-        play.pause();
+        audio.pause();
         buttonPlay.className = "fa-solid fa-circle-play";
         buttonPlayMini.className = "fa-solid fa-circle-play";
     } else {
-        play.play();
+        audio.play();
         buttonPlay.className = "fa-solid fa-circle-pause";
         buttonPlayMini.className = "fa-solid fa-circle-pause";
     }
 }
 function popOpen() {
     // Assign track names and img to container
-    play.src = track1.audioFile;
+    audio.src = track1.audioFile;
     musicTitleMini.innerText = track1.musicTitle;
     artistMini.innerText = track1.artistName;
     coverMini.src = track1.cover;
@@ -56,7 +56,7 @@ function popOpen() {
 }
 function popOpen2() {
     // Assign track names and img to container
-    play.src = track2.audioFile;
+    audio.src = track2.audioFile;
     musicTitleMini.innerText = track2.musicTitle;
     artistMini.innerText = track2.artistName;
     coverMini.src = track2.cover;
@@ -68,7 +68,7 @@ function popOpen2() {
 }
 function popOpen3() {
     // Assign track names and img to container
-    play.src = track3.audioFile;
+    audio.src = track3.audioFile;
     musicTitleMini.innerText = track3.musicTitle;
     artistMini.innerText = track3.artistName;
     coverMini.src = track3.cover;
@@ -80,7 +80,7 @@ function popOpen3() {
 }
 function popOpen4() {
     // Assign track names and img to container
-    play.src = track4.audioFile;
+    audio.src = track4.audioFile;
     musicTitleMini.innerText = track4.musicTitle;
     artistMini.innerText = track4.artistName;
     coverMini.src = track4.cover;
@@ -96,8 +96,8 @@ function pop() {
 function slideDownMini() {
     musicFloat.classList.remove('show');
     musicMini.classList.remove('show');
-    play.pause();
-    play.currentTime = 0;
+    audio.pause();
+    audio.currentTime = 0;
 }
 function slideDown() {
     musicFloat.classList.remove('show');
