@@ -5,25 +5,51 @@
     font-weight: normal;
 }
 @media (max-width: 360px) {
-    #slideDown { font-size: 40%; }
-    #coverFloat { max-width: 50vh; }
-    #musicTitleFloat { font-size: 100%; }
-    #artistFloat { font-size: 90%; }
-    .duration p { font-size: 5%; }
-    #restart,#loop { font-size: 12vw; }
-    #backward,#pause,#forward { font-size: 12vw; }
+    #slideDown {
+        font-size: 40%;
+    }
+    #coverFloat {
+        max-width: 50vh;
+    }
+    #musicTitleFloat {
+        font-size: 100%;
+    }
+    #artistFloat {
+        font-size: 90%;
+    }
+    .duration p {
+        font-size: 5%;
+    }
+    #restart,#loop {
+        font-size: 12vw;
+    }
+    #backward,#pause,#forward {
+        font-size: 12vw;
+    }
 }
 
-* { margin: 0; padding: 0; }
+* {
+    margin: 0;
+    padding: 0;
+}
 body {
     background-image: linear-gradient(lightblue, #87CEEB);
     font-family: 'Helvetica', Sans-Serif;
     color: #fff;
     height: 100dvh;
 }
-header { padding: 20px; border-bottom: 1px solid #fff; backdrop-filter: blur(5px); }
-i { background: none; border: none; }
-main { padding: 15px; }
+header {
+    padding: 20px;
+    border-bottom: 1px solid #fff;
+    backdrop-filter: blur(5px);
+}
+i {
+    background: none;
+    border: none;
+}
+main {
+    padding: 15px;
+}
 h1,h2,h3,h4 {
     padding-top: 3px;
     font-family: 'Helvetica', Sans-Serif;
@@ -46,13 +72,18 @@ h1,h2,h3,h4 {
     scroll-snap-align: center;
     transition: all 0.125s;
 }
-.container:active { color: #aaa; }
+.container:active {
+    color: #aaa;
+}
 img {
     border-radius: 10px;
     width: 100%;
     height: auto;
 }
-.container img { width: 12em; height: 12em; }
+.container img {
+    width: 12em;
+    height: 12em;
+}
 div button h3 {
     white-space: nowrap;
     overflow: hidden;
@@ -90,7 +121,10 @@ div button h3 {
     border-radius: 4px;
     transition: all 0.5s;
 }
-.errorContainer button:hover { background-color: #65ACC9; scale: 1.05; }
+.errorContainer button:hover {
+    background-color: #65ACC9;
+    scale: 1.05;
+}
 .musicMini {
     visibility: hidden;
     z-index: 2;
@@ -113,10 +147,21 @@ div button h3 {
     margin: 5px auto 0 auto;
     cursor: pointer;
 }
-.closeMusicMini:active { background-color: #ccc; }
-.musicMiniFlex { display: flex; gap: 10px; }
-.musicMini.show { visibility: visible; bottom: 5em; }
-#coverMini { width: 3em; height: auto; }
+.closeMusicMini:active {
+    background-color: #ccc;
+}
+.musicMiniFlex {
+    display: flex;
+    gap: 10px;
+}
+.musicMini.show {
+    visibility: visible;
+    bottom: 5em;
+}
+#coverMini {
+    width: 3em;
+    height: auto;
+}
 .musicInfo {
     display: flex;
     flex-grow: 1;
@@ -130,14 +175,20 @@ div button h3 {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.audioPlayMini { display: flex; align-items: center; gap: 5px; }
+.audioPlayMini {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
 #backwardMini, #pauseMini, #forwardMini {
     display: inline-block;
     font-size: 2.5rem;
     padding: 3px;
     color: #fff;
 }
-#backwardMini:active, #pauseMini:active, #forwardMini:active { color: #eee; }
+#backwardMini:active, #pauseMini:active, #forwardMini:active {
+    color: #eee;
+}
 .musicFloat {
     visibility: hidden;
     background: transparent;
@@ -153,23 +204,59 @@ div button h3 {
     transform: translateY(100dvh);
     transition: visibility 0.6s, transform 0.6s, backdrop-filter 1.3s;
 }
-.musicFloat.show { visibility: visible; transform: translateY(0px); backdrop-filter: blur(12px); }
-.showupFlex { display: flex; }
-#slideDown:active { color: #eee; }
-#durationSlider { width: 100%; }
+.musicFloat.show {
+    visibility: visible;
+    transform: translateY(0px);
+    backdrop-filter: blur(12px);
+}
+.showupFlex {
+    display: flex;
+}
+#slideDown:active {
+    color: #eee;
+}
+#durationSlider {
+    width: 100%;
+}
 #coverFloat {
     display: block;
     margin: 5dvh auto 5dvh auto;
     height: auto;
 }
-.duration { display: flex; justify-content: space-between; }
-.audioPlay { display: flex; justify-content: space-evenly; }
-#restart,#loop { font-size: 2.5rem; padding: 5px; }
-#loop { background-color: transparent; color: #fff; border-radius: 10px; transition: all 0.15s; }
-#loop.active { background-color: #fff; color: #87CEEB; box-sizing: border-box; }
-#backward,#pause,#forward { font-size: 4rem; }
-#restart:active,#backward:active,#pause:active,#forward:active { color: #eee; }
-button { background: none; border: none; color: #fff; }
+.duration {
+    display: flex;
+    justify-content: space-between;
+}
+.audioPlay {
+    display: flex;
+    justify-content: space-evenly;
+}
+#restart,#loop {
+    font-size: 2.5rem;
+    padding: 5px;
+}
+#loop {
+    background-color: transparent;
+    color: #fff;
+    border-radius: 10px;
+    transition: all 0.15s;
+}
+#loop.active {
+    background-color: #fff;
+    color: #87CEEB;
+    box-sizing: border-box;
+}
+#backward,#pause,#forward {
+    font-size: 4rem;
+}
+#restart:active,#backward:active,#pause:active,#forward:active {
+    color: #eee;
+}
+button {
+    background: none;
+    border: none;
+    color: #fff;
+}
 footer {
     z-index: 3;
     border-top: 1px solid #fff;
@@ -184,9 +271,17 @@ footer {
     text-align: center;
     box-sizing: border-box;
 }
-a { color: #fff; text-decoration: none; }
-footer i { font-size: 2em; transition: all 0.6s; }
-footer i:hover { scale: 1.11; }
+a {
+    color: #fff;
+    text-decoration: none;
+}
+footer i {
+    font-size: 2em;
+    transition: all 0.6s;
+}
+footer i:hover {
+    scale: 1.11;
+}
 .searchbox {
     position: fixed;
     display: none;
@@ -206,8 +301,15 @@ footer i:hover { scale: 1.11; }
 }
 
 @media (min-width: 768px) {
-    main { margin: 0 20% 0 20%; padding-bottom: 5%; }
-    .musicMini { width: 50dvw; left: 50%; cursor: pointer; }
+    main {
+        margin: 0 20% 0 20%;
+        padding-bottom: 5%;
+    }
+    .musicMini {
+        width: 50dvw;
+        left: 50%;
+        cursor: pointer;
+    }
     .musicFloat {
         width: clamp(5vh, 50dvh, 40dvw);
         height: auto;
@@ -228,5 +330,7 @@ footer i:hover { scale: 1.11; }
     #backward,#pause,#forward {
         font-size: clamp(3dvh, 8dvh, 4.5dvw);
     }
-    button { cursor: pointer; }
+    button {
+        cursor: pointer;
+    }
 }
