@@ -1,4 +1,5 @@
 import { track1, track2, track3, track4 } from "./tracks.js";
+const tracks = [track1, track2, track3, track4];
 
 let play = document.getElementById('audio');
 const musicFloat = document.getElementById('musicFloat');
@@ -11,14 +12,14 @@ let buttonPlay = document.getElementById('pause');
 let buttonPlayMini = document.getElementById('pauseMini');
 
 function containerNames() {
-    document.getElementById('containerImg1').src = track1.cover;
-    document.getElementById('containerTitle1').innerText = track1.musicTitle;
-    document.getElementById('containerImg2').src = track2.cover;
-    document.getElementById('containerTitle2').innerText = track2.musicTitle;
-    document.getElementById('containerImg3').src = track3.cover;
-    document.getElementById('containerTitle3').innerText = track3.musicTitle;
-    document.getElementById('containerImg4').src = track4.cover;
-    document.getElementById('containerTitle4').innerText = track4.musicTitle;
+    const containerImg = document.querySelectorAll('#containerImg');
+    const containerTitle = document.querySelectorAll('#containerTitle');
+    for (let i = 0; i <= 3; i++) {
+        const selectedTrackCover = tracks[i].cover;
+        const selectedTrackName = tracks[i].musicTitle;
+        containerImg[i].src = selectedTrackCover;
+        containerTitle[i].innerText = selectedTrackName;
+    }
 }
 function playIcon() {
     if (!musicMini.classList.contains('show')) { // Deteksi jika tidak musicMini tidak berclass show
