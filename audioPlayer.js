@@ -1,3 +1,6 @@
+const buttonPlay = document.getElementById('pause');
+const buttonPlayMini = document.getElementById('pauseMini');
+
 function duration() {
     const durationSlider = document.getElementById('durationSlider');
     let durationStart = document.getElementById('durationStart');
@@ -30,25 +33,27 @@ function duration() {
 
 function restart() { audio.currentTime = 0; }
 function minusTen() { audio.currentTime -= 10; }
+
 let isPlaying = true;
 function playAudio() {
-    if (isPlaying === false) { // Deteksi jika isPlaying itu false, dan memulai audio
+    if (isPlaying === false) { // Detects if isPlaying is false, and plays the audio
         audio.play();
         buttonPlay.className = "fa-solid fa-circle-pause";
         buttonPlayMini.className = "fa-solid fa-circle-pause";
-        isPlaying = true;
-    } else {
+        isPlaying = true; // Makes it true.
+    } else { // Else, stops the audio.
         audio.pause();
         buttonPlay.className = "fa-solid fa-circle-play";
         buttonPlayMini.className = "fa-solid fa-circle-play";
-        isPlaying = false;
+        isPlaying = false; // Makes it false, ready to be executed again.
     }
 }
 function plusTen() { audio.currentTime += 10; }
+
 let isOnLoop = false;
 function loop() {
     const loopButton = document.getElementById('loop');
-    if (isOnLoop === false) {
+    if (isOnLoop === false) { // Detects if isOnLoop is false, and them makes it on loop.
         audio.loop = true;
         loopButton.classList.add('active');
         isOnLoop = true;
@@ -58,3 +63,5 @@ function loop() {
         isOnLoop = false;
     }
 }
+// Execute on load.
+duration();

@@ -1,37 +1,33 @@
+// Import the tracks from tracks.js, and then merges them into an array
 import { track1, track2, track3, track4 } from "./tracks.js";
 const tracks = [track1, track2, track3, track4];
 
+// Declare variables.
 let audio = document.getElementById('audio');
+const container = document.querySelectorAll('.container');
 const musicFloat = document.getElementById('musicFloat');
 let musicMini = document.getElementById('musicMini');
 let musicTitleMini = document.getElementById('musicTitleMini');
 let artistMini = document.getElementById('artistMini');
 let coverMini = document.getElementById('coverMini');
 
-let buttonPlay = document.getElementById('pause');
-let buttonPlayMini = document.getElementById('pauseMini');
-
+// A function to automatically fill the value of the containers.
 function containerNames() {
     const containerImg = document.querySelectorAll('#containerImg');
     const containerTitle = document.querySelectorAll('#containerTitle');
-    for (let i = 0; i <= 3; i++) {
-        const selectedTrackCover = tracks[i].cover;
-        const selectedTrackName = tracks[i].musicTitle;
-        containerImg[i].src = selectedTrackCover;
-        containerTitle[i].innerText = selectedTrackName;
+    for (let i = 0; i < tracks.length; i++) {
+        containerImg[i].src = tracks[i].cover;
+        containerTitle[i].innerText = tracks[i].musicTitle;
     }
 }
 function playIcon() {
-    if (!musicMini.classList.contains('show')) { // Deteksi jika tidak musicMini tidak berclass show
+    if (!musicMini.classList.contains('show')) { // Detect if musicMini does not contain the className 'show'
         audio.currentTime = 0;
         musicMini.classList.add('show');
         buttonPlayMini.className = "fa-solid fa-circle-pause";
         buttonPlay.className = "fa-solid fa-circle-pause";
-    } else {
-        buttonPlayMini.className = "fa-solid fa-circle-pause";
-        buttonPlay.className = "fa-solid fa-circle-pause";
     }
-    // musicMini.style.display === 'none'
+    
     if (musicMini.style.display === 'none') {
         audio.pause();
         buttonPlay.className = "fa-solid fa-circle-play";
@@ -42,71 +38,35 @@ function playIcon() {
         buttonPlayMini.className = "fa-solid fa-circle-pause";
     }
 }
-function popOpen() {
-    // Assign track names and img to container
-    audio.src = track1.audioFile;
-    musicTitleMini.innerText = track1.musicTitle;
-    artistMini.innerText = track1.artistName;
-    coverMini.src = track1.cover;
-
-    musicTitleFloat.innerText = track1.musicTitle;
-    artistFloat.innerText = track1.artistName;
-    coverFloat.src = track1.cover;
-    playIcon();
-}
-function popOpen2() {
-    // Assign track names and img to container
-    audio.src = track2.audioFile;
-    musicTitleMini.innerText = track2.musicTitle;
-    artistMini.innerText = track2.artistName;
-    coverMini.src = track2.cover;
-
-    musicTitleFloat.innerText = track2.musicTitle;
-    artistFloat.innerText = track2.artistName;
-    coverFloat.src = track2.cover;
-    playIcon();
-}
-function popOpen3() {
-    // Assign track names and img to container
-    audio.src = track3.audioFile;
-    musicTitleMini.innerText = track3.musicTitle;
-    artistMini.innerText = track3.artistName;
-    coverMini.src = track3.cover;
-
-    musicTitleFloat.innerText = track3.musicTitle;
-    artistFloat.innerText = track3.artistName;
-    coverFloat.src = track3.cover;
-    playIcon();
-}
-function popOpen4() {
-    // Assign track names and img to container
-    audio.src = track4.audioFile;
-    musicTitleMini.innerText = track4.musicTitle;
-    artistMini.innerText = track4.artistName;
-    coverMini.src = track4.cover;
-
-    musicTitleFloat.innerText = track4.musicTitle;
-    artistFloat.innerText = track4.artistName;
-    coverFloat.src = track4.cover;
-    playIcon();
-}
-function pop() {
+container.forEach((item, index) => {
+    item.addEventListener('click', () => { // Adds the click event to each container
+        audio.src = tracks[index].audioFile;
+        musicTitleMini.innerText = tracks[index].musicTitle;
+        artistMini.innerText = tracks[index].artistName;
+        coverMini.src = tracks[index].cover;
+    
+        musicTitleFloat.innerText = tracks[index].musicTitle;
+        artistFloat.innerText = tracks[index].artistName;
+        coverFloat.src = tracks[index].cover;
+        playIcon();
+    })
+});
+function pop() { // If user clicks musicMini, it'll lead to this function.
     musicFloat.classList.add('show');
 }
-function slideDownMini() {
+function slideDownMini() { // That lil white thing on musicMini, used to close it (this function)
     musicFloat.classList.remove('show');
     musicMini.classList.remove('show');
     audio.pause();
     audio.currentTime = 0;
 }
-function slideDown() {
+function slideDown() { // The arrow button on musicFloat used to close it.
     musicFloat.classList.remove('show');
 }
+// Execute on load
+containerNames();
+
+// idk why it gives error if this one removed
 window.pop = pop;
 window.slideDown = slideDown;
 window.slideDownMini = slideDownMini;
-window.popOpen = popOpen;
-window.popOpen2 = popOpen2;
-window.popOpen3 = popOpen3;
-window.popOpen4 = popOpen4;
-window.containerNames = containerNames;

@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/jpeg" href="favicon.jpg">
-    <meta property="og:image" content="favicon.jpg">
-    <meta property="og:description" content="Dengarkan koleksi lagu Prabowo–Jokowi dimana saja dan kapanpun kamu mau.">
+    <meta property="og:description" content="Dengarkan koleksi lagu Prabowo–Jokowi dimana saja dan kapanpun kamu mau. Gratis tanpa iklan maupun biaya.">
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/6f449e2c05.js" crossorigin="anonymous"></script>
 </head>
@@ -28,29 +27,29 @@
         <h1>Cari lagu yang sesuai dengan kebutuhanmu akan Prabowo-Jokowi.</h1><br><br>
         <h2>Musik pilihan kami.</h2><br>
         <div class="containerList">
-            <button onclick="popOpen()" class="container">
+            <button class="container">
                 <img id="containerImg" src="">
                 <h3 id="containerTitle">TitleContainer</h3>
             </button>
-            <button onclick="popOpen2()" class="container">
+            <button class="container">
                 <img id="containerImg" src="">
                 <h3 id="containerTitle">TitleContainer2</h3>
             </button>
-            <button onclick="popOpen3()" class="container">
+            <button class="container">
                 <img id="containerImg" src="">
                 <h3 id="containerTitle">TitleContainer3</h3>
             </button>
         </div><br>
         <h2>Musik favorit Prabowo.</h2><br>
         <div class="containerList">
-            <button onclick="popOpen4()" class="container">
+            <button class="container">
                 <img id="containerImg" src="">
                 <h3 id="containerTitle">TitleContainer</h3>
             </button>
         </div>
     </main>
 
-    <div onclick="pop()" id="musicMini" class="musicMini" href="#">
+    <div onclick="pop()" id="musicMini" href="#">
         <div class="musicMiniFlex">
             <img id="coverMini" src="">
             <div class="musicInfo">
@@ -63,7 +62,7 @@
                 <button onclick="event.stopPropagation(); plusTen()"><i id="forwardMini" class="fa-solid fa-forward"></i></button>
             </div>
         </div>
-        <div class="closeMusicMini" onclick="event.stopPropagation(); slideDownMini()"></div>
+        <button class="closeMusicMini" onclick="event.stopPropagation(); slideDownMini()"></button>
     </div>
 
     <div id="musicFloat" class="musicFloat">
@@ -97,11 +96,5 @@
     <script src="audioPlayer.js"></script>
     <script type="module" src="popUp.js"></script>
     <script src="errorIcon.js"></script>
-    <script>
-        window.onload = () => {
-            duration();
-            containerNames();
-        };
-    </script>
 </body>
 </html>
