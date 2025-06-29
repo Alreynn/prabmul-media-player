@@ -82,6 +82,7 @@ img {
     height: 12em;
 }
 div button h3 {
+    font-family: 'Helvetica', Sans-Serif;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

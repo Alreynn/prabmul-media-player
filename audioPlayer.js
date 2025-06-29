@@ -38,13 +38,9 @@ let isPlaying = true;
 function playAudio() {
     if (isPlaying === false) { // Detects if isPlaying is false, and plays the audio
         audio.play();
-        buttonPlay.className = "fa-solid fa-circle-pause";
-        buttonPlayMini.className = "fa-solid fa-circle-pause";
         isPlaying = true; // Makes it true.
     } else { // Else, stops the audio.
         audio.pause();
-        buttonPlay.className = "fa-solid fa-circle-play";
-        buttonPlayMini.className = "fa-solid fa-circle-play";
         isPlaying = false; // Makes it false, ready to be executed again.
     }
 }
@@ -63,5 +59,19 @@ function loop() {
         isOnLoop = false;
     }
 }
+
+// Detects if audio is paused and played to change icon.
+setInterval(() => {
+    if (audio.paused) {
+        buttonPlay.className = "fa-solid fa-circle-play";
+        buttonPlayMini.className = "fa-solid fa-circle-play";
+        isPlaying = false; // Makes it false, ready to be executed again.
+    } else {
+        buttonPlay.className = "fa-solid fa-circle-pause";
+        buttonPlayMini.className = "fa-solid fa-circle-pause";
+        isPlaying = true;
+    }
+}, 10);
+
 // Execute on load.
 duration();
