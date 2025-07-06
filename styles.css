@@ -27,6 +27,14 @@
         font-size: 12vw;
     }
 }
+@keyframes loading {
+    0% {
+        background-color: #87CFEB;
+    }
+    100% {
+        background-color: lightblue;
+    }
+}
 
 * {
     margin: 0;
@@ -81,6 +89,9 @@ img {
     width: 12em;
     height: 12em;
 }
+.skeletonImg {
+    animation: loading 1.25s linear infinite alternate;
+}
 div button h3 {
     font-family: 'Helvetica', Sans-Serif;
     white-space: nowrap;
@@ -102,6 +113,7 @@ div button h3 {
     position: fixed;
     top: 50%;
     left: 50%;
+    width: 60%;
     transform: translate(-50%, -50%);
     opacity: 100%;
     padding: 12px;
@@ -280,6 +292,9 @@ footer i:hover {
     main {
         margin: 0 20% 0 20%;
         padding-bottom: 5%;
+    }
+    .errorContainer {
+        width: 15%;
     }
     #musicMini {
         width: 50dvw;
