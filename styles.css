@@ -299,15 +299,14 @@ footer i:hover {
     #musicMini {
         width: 50dvw;
         left: 50%;
-        cursor: pointer;
     }
     .musicFloat {
         width: clamp(5vh, 50dvh, 40dvw);
         height: auto;
         bottom: 5em;
         top: auto;
-        transform: translateY(150dvh);
-        transition: transform 0.8s;
+        transform: translateY(100dvh);
+        transition: visibility 0.8s, transform 0.8s, backdrop-filter 1.5s;
     }
     #musicTitleFloat {
         font-size: clamp(10px, 3dvh, 4dvh);
@@ -316,10 +315,18 @@ footer i:hover {
         font-size: clamp(5px, 2dvh, 3dvh);
     }
     #restart,#loop {
-        font-size: clamp(1.5dvh, 6dvh, 3dvw);
+        font-size: clamp(1.5dvh, 5dvh, 3dvw);
     }
     #backward,#pause,#forward {
-        font-size: clamp(3dvh, 8dvh, 4.5dvw);
+        font-size: clamp(3dvh, 7dvh, 4.5dvw);
+    }
+    
+@media (min-width: 1024px) {
+    .musicFloat {
+        transform: translateY(125dvh);
+    }
+    #musicMini {
+        cursor: pointer;
     }
     button {
         cursor: pointer;
